@@ -1,3 +1,5 @@
+import numpy as np
+from gaussian_smoothing import gau_smooth
 
 def zprof(arr,L=1.024,dx=0.004,Nz=544):
 	import numpy as np

@@ -14,6 +14,7 @@ def plottable_hist(data,bins,density=False):
 	return [pbins,freqs]
 
 def pdf_moment(bins,pdf,db,m=1):
+	import numpy as np
 	return np.sum((bins**m)*pdf)*db
 
 def pdf_var(bins,pdf,db):
@@ -53,4 +54,9 @@ def mod_arr(arr):
 		return np.sqrt(np.sum(arr*arr,axis=0))
 
 
-
+def find_median(base,pdf,dx):
+	import numpy as np
+	cdf = np.cumsum(pdf)*dx
+	df = np.fabs(cdf-0.5)
+	ind = np.where(df==df.min())[0][0]
+	return base[ind]
